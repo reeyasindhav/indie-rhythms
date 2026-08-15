@@ -142,9 +142,7 @@ function Home() {
               style={{ animation: `fade-up 0.6s cubic-bezier(0.16,1,0.3,1) ${i * 70}ms both` }}
             >
               <h3 className="display text-3xl uppercase">{mood.name}</h3>
-              <p className="mt-4 label opacity-70">
-                {mood.no} / explore ↗
-              </p>
+              <p className="mt-4 label opacity-70">{mood.no} / explore ↗</p>
               <p className="mt-3 max-w-[22ch] text-xs leading-relaxed text-muted-foreground opacity-0 transition-opacity duration-500 group-hover:text-paper/70 group-hover:opacity-100">
                 {mood.line}
               </p>

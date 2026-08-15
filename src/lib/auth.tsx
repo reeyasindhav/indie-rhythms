@@ -1,4 +1,5 @@
 import { createContext, useCallback, useContext, useEffect, useMemo, useState } from "react";
+import { useRouter } from "@tanstack/react-router";
 
 // Client-side mock session (no backend). Persisted in localStorage so the
 // gated dashboard/library routes behave like a real signed-in experience.
@@ -13,6 +14,7 @@ type AuthValue = {
   user: SessionUser | null;
   ready: boolean;
   signIn: (email: string, name?: string) => void;
+  updateProfile: (profile: Pick<SessionUser, "name" | "city">) => void;
   signOut: () => void;
   saved: string[];
   toggleSaved: (slug: string) => void;
@@ -27,6 +29,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
   const [user, setUser] = useState<SessionUser | null>(null);
   const [saved, setSaved] = useState<string[]>([]);
   const [ready, setReady] = useState(false);
+  const router = useRouter();
 
   useEffect(() => {
     try {
@@ -55,6 +58,16 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
   const signOut = useCallback(() => {
     localStorage.removeItem(KEY);
     setUser(null);
+    router.navigate({ to: "/" });
+  }, [router]);
+
+  const updateProfile = useCallback((profile: Pick<SessionUser, "name" | "city">) => {
+    setUser((previous) => {
+      if (!previous) return previous;
+      const next = { ...previous, ...profile };
+      localStorage.setItem(KEY, JSON.stringify(next));
+      return next;
+    });
   }, []);
 
   const toggleSaved = useCallback((slug: string) => {
@@ -66,8 +79,8 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
   }, []);
 
   const value = useMemo(
-    () => ({ user, ready, signIn, signOut, saved, toggleSaved }),
-    [user, ready, signIn, signOut, saved, toggleSaved],
+    () => ({ user, ready, signIn, updateProfile, signOut, saved, toggleSaved }),
+    [user, ready, signIn, updateProfile, signOut, saved, toggleSaved],
   );
 
   return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>;

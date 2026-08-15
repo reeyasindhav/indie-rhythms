@@ -12,7 +12,9 @@ export const Route = createFileRoute("/moods/$slug")({
   },
   head: ({ loaderData }) => {
     if (!loaderData) {
-      return { meta: [{ title: "Mood not found — PITCHFORK_" }, { name: "robots", content: "noindex" }] };
+      return {
+        meta: [{ title: "Mood not found — PITCHFORK_" }, { name: "robots", content: "noindex" }],
+      };
     }
     const title = `${loaderData.mood.name} — Mood Board | PITCHFORK_`;
     return {
@@ -40,7 +42,9 @@ function MoodPage() {
           className="absolute inset-0 h-full w-full object-cover opacity-20 grayscale"
         />
         <div className="relative">
-          <p className="label text-acid">mood {mood.no} / {mood.bpm}</p>
+          <p className="label text-acid">
+            mood {mood.no} / {mood.bpm}
+          </p>
           <h1 className="mt-6 display text-[clamp(3rem,10vw,9rem)] uppercase animate-fade-up">
             {mood.name}
           </h1>

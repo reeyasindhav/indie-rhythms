@@ -10,33 +10,217 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as AboutRouteImport } from './routes/about'
+import { Route as ArtistsRouteImport } from './routes/artists'
+import { Route as DashboardRouteImport } from './routes/dashboard'
+import { Route as DiscoverRouteImport } from './routes/discover'
+import { Route as LoginRouteImport } from './routes/login'
+import { Route as PrivacyRouteImport } from './routes/privacy'
+import { Route as ProfileRouteImport } from './routes/profile'
+import { Route as RadarRouteImport } from './routes/radar'
+import { Route as ReviewsRouteImport } from './routes/reviews'
+import { Route as SubmitRouteImport } from './routes/submit'
+import { Route as TermsRouteImport } from './routes/terms'
+import { Route as ArtistsSlugRouteImport } from './routes/artists.$slug'
+import { Route as MoodsSlugRouteImport } from './routes/moods.$slug'
+import { Route as ReviewsSlugRouteImport } from './routes/reviews.$slug'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const AboutRoute = AboutRouteImport.update({
+  id: '/about',
+  path: '/about',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ArtistsRoute = ArtistsRouteImport.update({
+  id: '/artists',
+  path: '/artists',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const DashboardRoute = DashboardRouteImport.update({
+  id: '/dashboard',
+  path: '/dashboard',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const DiscoverRoute = DiscoverRouteImport.update({
+  id: '/discover',
+  path: '/discover',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const LoginRoute = LoginRouteImport.update({
+  id: '/login',
+  path: '/login',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const PrivacyRoute = PrivacyRouteImport.update({
+  id: '/privacy',
+  path: '/privacy',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ProfileRoute = ProfileRouteImport.update({
+  id: '/profile',
+  path: '/profile',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const RadarRoute = RadarRouteImport.update({
+  id: '/radar',
+  path: '/radar',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ReviewsRoute = ReviewsRouteImport.update({
+  id: '/reviews',
+  path: '/reviews',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const SubmitRoute = SubmitRouteImport.update({
+  id: '/submit',
+  path: '/submit',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const TermsRoute = TermsRouteImport.update({
+  id: '/terms',
+  path: '/terms',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ArtistsSlugRoute = ArtistsSlugRouteImport.update({
+  id: '/$slug',
+  path: '/$slug',
+  getParentRoute: () => ArtistsRoute,
+} as any)
+const MoodsSlugRoute = MoodsSlugRouteImport.update({
+  id: '/moods/$slug',
+  path: '/moods/$slug',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ReviewsSlugRoute = ReviewsSlugRouteImport.update({
+  id: '/$slug',
+  path: '/$slug',
+  getParentRoute: () => ReviewsRoute,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/about': typeof AboutRoute
+  '/artists': typeof ArtistsRouteWithChildren
+  '/dashboard': typeof DashboardRoute
+  '/discover': typeof DiscoverRoute
+  '/login': typeof LoginRoute
+  '/privacy': typeof PrivacyRoute
+  '/profile': typeof ProfileRoute
+  '/radar': typeof RadarRoute
+  '/reviews': typeof ReviewsRouteWithChildren
+  '/submit': typeof SubmitRoute
+  '/terms': typeof TermsRoute
+  '/artists/$slug': typeof ArtistsSlugRoute
+  '/moods/$slug': typeof MoodsSlugRoute
+  '/reviews/$slug': typeof ReviewsSlugRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/about': typeof AboutRoute
+  '/artists': typeof ArtistsRouteWithChildren
+  '/dashboard': typeof DashboardRoute
+  '/discover': typeof DiscoverRoute
+  '/login': typeof LoginRoute
+  '/privacy': typeof PrivacyRoute
+  '/profile': typeof ProfileRoute
+  '/radar': typeof RadarRoute
+  '/reviews': typeof ReviewsRouteWithChildren
+  '/submit': typeof SubmitRoute
+  '/terms': typeof TermsRoute
+  '/artists/$slug': typeof ArtistsSlugRoute
+  '/moods/$slug': typeof MoodsSlugRoute
+  '/reviews/$slug': typeof ReviewsSlugRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/about': typeof AboutRoute
+  '/artists': typeof ArtistsRouteWithChildren
+  '/dashboard': typeof DashboardRoute
+  '/discover': typeof DiscoverRoute
+  '/login': typeof LoginRoute
+  '/privacy': typeof PrivacyRoute
+  '/profile': typeof ProfileRoute
+  '/radar': typeof RadarRoute
+  '/reviews': typeof ReviewsRouteWithChildren
+  '/submit': typeof SubmitRoute
+  '/terms': typeof TermsRoute
+  '/artists/$slug': typeof ArtistsSlugRoute
+  '/moods/$slug': typeof MoodsSlugRoute
+  '/reviews/$slug': typeof ReviewsSlugRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/'
+  fullPaths:
+    | '/'
+    | '/about'
+    | '/artists'
+    | '/dashboard'
+    | '/discover'
+    | '/login'
+    | '/privacy'
+    | '/profile'
+    | '/radar'
+    | '/reviews'
+    | '/submit'
+    | '/terms'
+    | '/artists/$slug'
+    | '/moods/$slug'
+    | '/reviews/$slug'
   fileRoutesByTo: FileRoutesByTo
-  to: '/'
-  id: '__root__' | '/'
+  to:
+    | '/'
+    | '/about'
+    | '/artists'
+    | '/dashboard'
+    | '/discover'
+    | '/login'
+    | '/privacy'
+    | '/profile'
+    | '/radar'
+    | '/reviews'
+    | '/submit'
+    | '/terms'
+    | '/artists/$slug'
+    | '/moods/$slug'
+    | '/reviews/$slug'
+  id:
+    | '__root__'
+    | '/'
+    | '/about'
+    | '/artists'
+    | '/dashboard'
+    | '/discover'
+    | '/login'
+    | '/privacy'
+    | '/profile'
+    | '/radar'
+    | '/reviews'
+    | '/submit'
+    | '/terms'
+    | '/artists/$slug'
+    | '/moods/$slug'
+    | '/reviews/$slug'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  AboutRoute: typeof AboutRoute
+  ArtistsRoute: typeof ArtistsRouteWithChildren
+  DashboardRoute: typeof DashboardRoute
+  DiscoverRoute: typeof DiscoverRoute
+  LoginRoute: typeof LoginRoute
+  PrivacyRoute: typeof PrivacyRoute
+  ProfileRoute: typeof ProfileRoute
+  RadarRoute: typeof RadarRoute
+  ReviewsRoute: typeof ReviewsRouteWithChildren
+  SubmitRoute: typeof SubmitRoute
+  TermsRoute: typeof TermsRoute
+  MoodsSlugRoute: typeof MoodsSlugRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -48,11 +232,143 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/about': {
+      id: '/about'
+      path: '/about'
+      fullPath: '/about'
+      preLoaderRoute: typeof AboutRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/artists': {
+      id: '/artists'
+      path: '/artists'
+      fullPath: '/artists'
+      preLoaderRoute: typeof ArtistsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/dashboard': {
+      id: '/dashboard'
+      path: '/dashboard'
+      fullPath: '/dashboard'
+      preLoaderRoute: typeof DashboardRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/discover': {
+      id: '/discover'
+      path: '/discover'
+      fullPath: '/discover'
+      preLoaderRoute: typeof DiscoverRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/login': {
+      id: '/login'
+      path: '/login'
+      fullPath: '/login'
+      preLoaderRoute: typeof LoginRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/privacy': {
+      id: '/privacy'
+      path: '/privacy'
+      fullPath: '/privacy'
+      preLoaderRoute: typeof PrivacyRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/profile': {
+      id: '/profile'
+      path: '/profile'
+      fullPath: '/profile'
+      preLoaderRoute: typeof ProfileRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/radar': {
+      id: '/radar'
+      path: '/radar'
+      fullPath: '/radar'
+      preLoaderRoute: typeof RadarRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/reviews': {
+      id: '/reviews'
+      path: '/reviews'
+      fullPath: '/reviews'
+      preLoaderRoute: typeof ReviewsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/submit': {
+      id: '/submit'
+      path: '/submit'
+      fullPath: '/submit'
+      preLoaderRoute: typeof SubmitRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/terms': {
+      id: '/terms'
+      path: '/terms'
+      fullPath: '/terms'
+      preLoaderRoute: typeof TermsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/artists/$slug': {
+      id: '/artists/$slug'
+      path: '/$slug'
+      fullPath: '/artists/$slug'
+      preLoaderRoute: typeof ArtistsSlugRouteImport
+      parentRoute: typeof ArtistsRoute
+    }
+    '/moods/$slug': {
+      id: '/moods/$slug'
+      path: '/moods/$slug'
+      fullPath: '/moods/$slug'
+      preLoaderRoute: typeof MoodsSlugRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/reviews/$slug': {
+      id: '/reviews/$slug'
+      path: '/$slug'
+      fullPath: '/reviews/$slug'
+      preLoaderRoute: typeof ReviewsSlugRouteImport
+      parentRoute: typeof ReviewsRoute
+    }
   }
 }
 
+interface ArtistsRouteChildren {
+  ArtistsSlugRoute: typeof ArtistsSlugRoute
+}
+
+const ArtistsRouteChildren: ArtistsRouteChildren = {
+  ArtistsSlugRoute: ArtistsSlugRoute,
+}
+
+const ArtistsRouteWithChildren =
+  ArtistsRoute._addFileChildren(ArtistsRouteChildren)
+
+interface ReviewsRouteChildren {
+  ReviewsSlugRoute: typeof ReviewsSlugRoute
+}
+
+const ReviewsRouteChildren: ReviewsRouteChildren = {
+  ReviewsSlugRoute: ReviewsSlugRoute,
+}
+
+const ReviewsRouteWithChildren =
+  ReviewsRoute._addFileChildren(ReviewsRouteChildren)
+
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  AboutRoute: AboutRoute,
+  ArtistsRoute: ArtistsRouteWithChildren,
+  DashboardRoute: DashboardRoute,
+  DiscoverRoute: DiscoverRoute,
+  LoginRoute: LoginRoute,
+  PrivacyRoute: PrivacyRoute,
+  ProfileRoute: ProfileRoute,
+  RadarRoute: RadarRoute,
+  ReviewsRoute: ReviewsRouteWithChildren,
+  SubmitRoute: SubmitRoute,
+  TermsRoute: TermsRoute,
+  MoodsSlugRoute: MoodsSlugRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)

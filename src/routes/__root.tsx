@@ -12,7 +12,8 @@ import { useEffect, type ReactNode } from "react";
 import appCss from "../styles.css?url";
 import { reportLovableError } from "../lib/lovable-error-reporting";
 import { AuthProvider } from "../lib/auth";
-import { SiteFooter, SiteHeader } from "../components/site/SiteChrome";
+import { PlayerProvider } from "../lib/player";
+import { SiteFooter, MiniPlayer, SiteHeader } from "../components/site/SiteChrome";
 import { Toaster } from "../components/ui/sonner";
 
 function NotFoundComponent() {
@@ -119,14 +120,17 @@ function RootComponent() {
   return (
     <QueryClientProvider client={queryClient}>
       <AuthProvider>
-        <div className="flex min-h-screen flex-col">
-          <SiteHeader />
-          {/* Required: nested routes render here. */}
-          <main className="flex-1">
-            <Outlet />
-          </main>
-          <SiteFooter />
-        </div>
+        <PlayerProvider>
+          <div className="flex min-h-screen flex-col pb-16 md:pb-0">
+            <SiteHeader />
+            {/* Required: nested routes render here. */}
+            <main className="flex-1">
+              <Outlet />
+            </main>
+            <SiteFooter />
+          </div>
+          <MiniPlayer />
+        </PlayerProvider>
         <Toaster />
       </AuthProvider>
     </QueryClientProvider>

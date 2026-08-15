@@ -331,7 +331,7 @@ export const moods: Mood[] = [
     bpm: "70 – 96 BPM",
     color: "acid",
     line: "Loud feelings at low volume. Distortion used gently.",
-    image: u("1470229722913-7ea0e5b0e1a4", 1200),
+    image: u("1493225457124-a3eb161ffa5f", 1200),
     genres: ["Alt Pop", "Hip-Hop", "Ambient"],
   },
   {
@@ -384,14 +384,24 @@ export const radar = [
     date: "14 AUG",
     items: [
       { title: "Concrete Flowers", artist: "Dhanji Rivers", type: "LP", slug: "concrete-flowers" },
-      { title: "Tape Hiss Diaries", artist: "Bombay Loomwork", type: "EP", slug: "tape-hiss-diaries" },
+      {
+        title: "Tape Hiss Diaries",
+        artist: "Bombay Loomwork",
+        type: "EP",
+        slug: "tape-hiss-diaries",
+      },
     ],
   },
   {
     day: "YESTERDAY",
     date: "13 AUG",
     items: [
-      { title: "Ajnabi Frequencies", artist: "Sitar Error", type: "EP", slug: "ajnabi-frequencies" },
+      {
+        title: "Ajnabi Frequencies",
+        artist: "Sitar Error",
+        type: "EP",
+        slug: "ajnabi-frequencies",
+      },
       { title: "Highway 44", artist: "Zubeen Static", type: "LP", slug: "highway-44" },
     ],
   },

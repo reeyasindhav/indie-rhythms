@@ -4,7 +4,7 @@ Pitchfork- Indian Music Discovery Platform
 
 Please create a full UI/UX design for this website. Make sure to have design-focused pages. Make sure to use and iterate on the given images to create ui. The final site should be production-ready with functional implementation. It should include a minimum of 8 to 10 pages, including login/signup pages and authenticated pages like the dashboard. The focus should be on design while maintaining all mockup data. Add animations to the site, and please provide a simple user flow in the response.
 
-Please do not generate images; we have to add images to the site user open source images. 
+Please do not generate images; we have to add images to the site user open source images.
 and the given reference should be iterated to match a proper real-world layout. text design
 
 Design Ideas: Raw underground aesthetic, artist spotlight pages, genre mood board discovery, album review cards, new release radar feature.

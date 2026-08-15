@@ -4,6 +4,7 @@ import { Play } from "lucide-react";
 import { Marquee } from "@/components/site/Marquee";
 import { Reveal } from "@/components/site/Reveal";
 import { getRelease, radar } from "@/lib/data";
+import { usePlayer } from "@/lib/player";
 
 export const Route = createFileRoute("/radar")({
   head: () => ({
@@ -25,6 +26,7 @@ export const Route = createFileRoute("/radar")({
 });
 
 function Radar() {
+  const { current, playing, toggle } = usePlayer();
   return (
     <div>
       <header className="border-b border-ink/70 px-5 py-16 md:px-10 md:py-20">
@@ -36,8 +38,8 @@ function Radar() {
             </h1>
           </div>
           <p className="max-w-sm text-sm leading-relaxed text-muted-foreground">
-            Chronological, unweighted, human-logged. If it came out and it's independent, it's here —
-            no chart position required.
+            Chronological, unweighted, human-logged. If it came out and it's independent, it's here
+            — no chart position required.
           </p>
         </div>
       </header>
@@ -56,6 +58,7 @@ function Radar() {
               <ul className="mt-8">
                 {block.items.map((item) => {
                   const release = getRelease(item.slug);
+                  const isCurrent = current?.slug === item.slug;
                   return (
                     <li key={item.slug} className="group border-t border-ink/20">
                       <Link
@@ -72,9 +75,24 @@ function Radar() {
                         <span className="display text-3xl uppercase md:text-4xl">{item.title}</span>
                         <span className="label text-muted-foreground">{item.artist}</span>
                         <span className="border border-ink px-2 py-1 label">{item.type}</span>
-                        <span className="ml-auto flex items-center gap-3 label opacity-0 transition-opacity duration-300 group-hover:opacity-100">
-                          play <Play className="h-3 w-3 fill-current" />
-                        </span>
+                        <button
+                          type="button"
+                          onClick={(e) => {
+                            e.preventDefault();
+                            e.stopPropagation();
+                            if (!release) return;
+                            toggle({
+                              slug: release.slug,
+                              title: release.title,
+                              artist: release.artist,
+                              cover: release.cover,
+                            });
+                          }}
+                          className="ml-auto flex items-center gap-2 label opacity-0 transition-opacity duration-300 group-hover:opacity-100 hover:text-acid"
+                        >
+                          {isCurrent && playing ? "Pause" : "Play"}
+                          <Play className="h-3 w-3 fill-current" />
+                        </button>
                       </Link>
                     </li>
                   );

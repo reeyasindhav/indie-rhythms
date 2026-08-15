@@ -50,7 +50,8 @@ function Discover() {
               params={{ slug: mood.slug }}
               className={cn(
                 "group flex h-full flex-col justify-between border-b border-r border-ink/25 p-7 transition-colors duration-500",
-                mood.color === "ink" && "bg-ink text-paper hover:bg-acid hover:text-acid-foreground",
+                mood.color === "ink" &&
+                  "bg-ink text-paper hover:bg-acid hover:text-acid-foreground",
                 mood.color === "acid" &&
                   "bg-acid text-acid-foreground hover:bg-ink hover:text-paper",
                 mood.color === "paper" && "bg-paper hover:bg-ink hover:text-paper",
